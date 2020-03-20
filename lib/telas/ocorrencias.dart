@@ -8,8 +8,12 @@ class Ocorrencias extends StatefulWidget {
 class _OcorrenciasState extends State<Ocorrencias> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child : Center( child: Text("Ocorrencias"),)
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          Text("")
+        ],
+      ),
     );
   }
 }
