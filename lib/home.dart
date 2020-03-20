@@ -32,7 +32,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: Text("Ocorrências COVID-19"),
+        title: Text("COVID-19 BR Informações"),
       ),
       body: telas[_indice],
         bottomNavigationBar: BottomNavigationBar(

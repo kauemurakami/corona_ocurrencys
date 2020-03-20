@@ -46,7 +46,7 @@ class _OcorrenciasState extends State<Ocorrencias> {
                               padding: EdgeInsets.all(16),
                             child: Column(
                               children: <Widget>[
-                                Text("País: "+countrie.countryName),
+                                Text(countrie.countryName),
                                 Text("Casos ativos: "+countrie.activeCases),
                                 Text("Mortes: "+countrie.deaths),
                                 Text("Recuperados: "+countrie.totalRecovered),

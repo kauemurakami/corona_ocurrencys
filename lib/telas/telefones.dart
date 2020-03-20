@@ -17,7 +17,7 @@ class _TelefonesState extends State<Telefones> {
             child: Center(
               child: Column(
               children: <Widget>[
-              Text("Muitas informações incorretas sobre o coronavírus, denominado Covid-19, estão sendo disseminadas. Para esclarecer dúvidas, ligue no número 136, do Ministério da Saúde."
+              Text("EVITE INFORMAÇÕES FALSAS \n LIGUE 136 MINISTÉRIO DA SAÚDE.\n"
               ,style: TextStyle(fontSize: 15),),
                           Text(
                           "136",
