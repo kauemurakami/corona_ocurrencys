@@ -1,6 +1,8 @@
 import 'package:covidocurrencys/api_br.dart';
 import 'package:covidocurrencys/model/estadosbr.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 class OcorrenciasNacionais extends StatefulWidget {
   @override
@@ -9,10 +11,59 @@ class OcorrenciasNacionais extends StatefulWidget {
 
 class _OcorrenciasNacionaisState extends State<OcorrenciasNacionais> {
 
+  int touchIndex;
   _buscarDadosBR(){
     ApiBR api = ApiBR();
     print(api.buscarBR());
     return api.buscarBR();
+  }
+
+  List<PieChartSectionData> _showingSections(){
+    return List.generate(4, (i) {
+      final isTouched = i == touchIndex;
+      final double fontSize = isTouched ? 25 : 16;
+      final double radius = isTouched ? 60 : 50;
+      switch (i) {
+        case 0:
+          return PieChartSectionData(
+            color: const Color(0xff0293ee),
+            value: 40,
+            title: '40%',
+            radius: radius,
+            titleStyle: TextStyle(
+                fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+          );
+        case 1:
+          return PieChartSectionData(
+            color: const Color(0xfff8b250),
+            value: 30,
+            title: '30%',
+            radius: radius,
+            titleStyle: TextStyle(
+                fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+          );
+        case 2:
+          return PieChartSectionData(
+            color: const Color(0xff845bef),
+            value: 15,
+            title: '15%',
+            radius: radius,
+            titleStyle: TextStyle(
+                fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+          );
+        case 3:
+          return PieChartSectionData(
+            color: const Color(0xff13d38e),
+            value: 15,
+            title: '15%',
+            radius: radius,
+            titleStyle: TextStyle(
+                fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
+          );
+        default:
+          return null;
+      }
+    });
   }
 
   @override
@@ -44,23 +95,29 @@ class _OcorrenciasNacionaisState extends State<OcorrenciasNacionais> {
                         Container(
                             child : Padding(
                               padding: EdgeInsets.all(16),
-                              child: Column(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: <Widget>[
-                                  Text(
-                                    estado.state + " - " +
-                                    estado.uf,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold
-                                    ),
+                                  Column(
+                                    children: <Widget>[
+                                      Text(
+                                        estado.state + " - " +
+                                            estado.uf,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold
+                                        ),
+                                      ),
+                                      Text("Casos ativos: "+estado.cases.toString()),
+                                      Text("Baixas: "+estado.deaths.toString()),
+                                      Text("Casos Negativos: "+estado.refuses.toString()),
+                                      Text("Casos Suspeitos: "+estado.suspects.toString()),
+                                    ],
                                   ),
-                                  Text("Casos ativos: "+estado.cases.toString()),
-                                  Text("Mortes: "+estado.deaths.toString()),
-                                  Text("Casos Negativos: "+estado.refuses.toString()),
-                                  Text("Casos Suspeitos: "+estado.suspects.toString()),
+                                  //nova coluna grafico
                                 ],
                               ),
-                            )
-                        ),
+                            ) ,
+                        )
                       ],
                     );
                   }

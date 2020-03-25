@@ -48,7 +48,7 @@ class _OcorrenciasState extends State<Ocorrencias> {
                               children: <Widget>[
                                 Text(countrie.countryName, style:  TextStyle(fontWeight: FontWeight.bold),),
                                 Text("Casos ativos: "+countrie.activeCases),
-                                Text("Mortes: "+countrie.deaths),
+                                Text("Baixas: "+countrie.deaths),
                                 Text("Recuperados: "+countrie.totalRecovered),
                                 Text("Casos graves: "+countrie.seriousCritical),
                                 Text("Casos por 1m de pessoas: "+countrie.totalCasesP1mPopulation),
